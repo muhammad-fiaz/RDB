@@ -8,6 +8,7 @@
 <a href="https://github.com/muhammad-fiaz/rdb/releases"><img src="https://img.shields.io/github/v/release/muhammad-fiaz/rdb" alt="GitHub release"></a>
 <a href="https://github.com/muhammad-fiaz/rdb"><img src="https://img.shields.io/github/license/muhammad-fiaz/rdb" alt="License"></a>
 <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/rust-1.70%2B-orange" alt="Rust"></a>
+<a href="https://github.com/muhammad-fiaz/RDB/actions/workflows/deploy-docs.yml"><img src="https://github.com/muhammad-fiaz/RDB/actions/workflows/deploy-docs.yml/badge.svg" alt="Build Docs"></a>
 
 <p><em>High-performance, JSON-based relational database built entirely in Rust.</em></p>
 
