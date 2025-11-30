@@ -3,6 +3,5 @@ authors = ["Muhammad Fiaz"]
 language = "en"
 src = "src"
 title = "RDB Documentation"
-site-url = "/RDB/"
 
 [output.html]
