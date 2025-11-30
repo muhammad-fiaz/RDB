@@ -36,12 +36,10 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.ref }}
-          release_name: RDB v${{ steps.get_version.outputs.version }}
+          name: RDB v${{ steps.get_version.outputs.version }}
           body: |
             # 🚀 RDB v${{ steps.get_version.outputs.version }}
             
@@ -55,18 +53,18 @@ jobs:
             
             | Platform | Method | Command |
             |----------|--------|---------|
-            | **Linux (x86_64)** | Direct Download | `wget https://github.com/muhammad-fiaz/rdb/releases/download/v${{ steps.get_version.outputs.version }}/rdb-linux-x86_64 && chmod +x rdb-linux-x86_64 && sudo mv rdb-linux-x86_64 /usr/local/bin/rdb` |
-            | **macOS (Intel)** | Direct Download | `curl -L https://github.com/muhammad-fiaz/rdb/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-x86_64 -o rdb && chmod +x rdb && sudo mv rdb /usr/local/bin/` |
-            | **macOS (Apple Silicon)** | Direct Download | `curl -L https://github.com/muhammad-fiaz/rdb/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-aarch64 -o rdb && chmod +x rdb && sudo mv rdb /usr/local/bin/` |
+            | **Linux (x86_64)** | Direct Download | `wget https://github.com/muhammad-fiaz/RDB/releases/download/v${{ steps.get_version.outputs.version }}/rdb-linux-x86_64 && chmod +x rdb-linux-x86_64 && sudo mv rdb-linux-x86_64 /usr/local/bin/rdb` |
+            | **macOS (Intel)** | Direct Download | `curl -L https://github.com/muhammad-fiaz/RDB/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-x86_64 -o rdb && chmod +x rdb && sudo mv rdb /usr/local/bin/` |
+            | **macOS (Apple Silicon)** | Direct Download | `curl -L https://github.com/muhammad-fiaz/RDB/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-aarch64 -o rdb && chmod +x rdb && sudo mv rdb /usr/local/bin/` |
             | **Windows (x64)** | Direct Download | Download `rdb-windows-x86_64.exe` and add to PATH |
-            | **Any Platform** | From Source | `cargo install --git https://github.com/muhammad-fiaz/rdb` |
+            | **Any Platform** | From Source | `cargo install --git https://github.com/muhammad-fiaz/RDB` |
             
             ### Detailed Installation
             
             #### Linux
             ```bash
             # Download
-            wget https://github.com/muhammad-fiaz/rdb/releases/download/v${{ steps.get_version.outputs.version }}/rdb-linux-x86_64
+            wget https://github.com/muhammad-fiaz/RDB/releases/download/v${{ steps.get_version.outputs.version }}/rdb-linux-x86_64
             
             # Make executable
             chmod +x rdb-linux-x86_64
@@ -81,10 +79,10 @@ jobs:
             #### macOS
             ```bash
             # Intel Macs
-            curl -L https://github.com/muhammad-fiaz/rdb/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-x86_64 -o rdb
+            curl -L https://github.com/muhammad-fiaz/RDB/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-x86_64 -o rdb
             
             # Apple Silicon Macs
-            curl -L https://github.com/muhammad-fiaz/rdb/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-aarch64 -o rdb
+            curl -L https://github.com/muhammad-fiaz/RDB/releases/download/v${{ steps.get_version.outputs.version }}/rdb-macos-aarch64 -o rdb
             
             # Make executable and move to PATH
             chmod +x rdb
@@ -184,25 +182,25 @@ jobs:
             ```
             
             ### Get Help
-            - 📖 **Docs:** https://github.com/muhammad-fiaz/rdb/tree/main/docs
-            - 🐛 **Issues:** https://github.com/muhammad-fiaz/rdb/issues
-            - 💬 **Discussions:** https://github.com/muhammad-fiaz/rdb/discussions
+            - 📖 **Docs:** https://github.com/muhammad-fiaz/RDB/tree/main/docs
+            - 🐛 **Issues:** https://github.com/muhammad-fiaz/RDB/issues
+            - 💬 **Discussions:** https://github.com/muhammad-fiaz/RDB/discussions
             
             ---
             
             ## 📝 Changelog
             
-            See [CHANGELOG.md](https://github.com/muhammad-fiaz/rdb/blob/main/CHANGELOG.md) for detailed changes.
+            See [CHANGELOG.md](https://github.com/muhammad-fiaz/RDB/blob/main/CHANGELOG.md) for detailed changes.
             
             ---
             
             ## 📄 License
             
-            Licensed under the Apache License 2.0 - see [LICENSE](https://github.com/muhammad-fiaz/rdb/blob/main/LICENSE) for details.
+            Licensed under the Apache License 2.0 - see [LICENSE](https://github.com/muhammad-fiaz/RDB/blob/main/LICENSE) for details.
             
             ---
             
-            **Full documentation:** https://github.com/muhammad-fiaz/rdb/tree/main/docs
+            **Full documentation:** https://github.com/muhammad-fiaz/RDB/tree/main/docs
   build-linux:
     name: Build Linux
     needs: create-release
