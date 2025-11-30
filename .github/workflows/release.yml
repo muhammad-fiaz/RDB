@@ -31,8 +31,12 @@ jobs:
           else
             git log --pretty=format:"%s (%h)" --max-count=20 >> changelog.md
           fi
-          content=$(cat changelog.md)
-          echo "content=$content" >> $GITHUB_OUTPUT
+          # Publish changelog as a multiline workflow output using the supported
+          # GITHUB_OUTPUT heredoc syntax. This avoids invalid-format errors when
+          # the changelog contains newlines or special characters.
+          echo 'content<<EOF' >> $GITHUB_OUTPUT
+          cat changelog.md >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
