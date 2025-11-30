@@ -631,7 +631,7 @@ config.toml (sanitized)
 - 📖 **Documentation:** [docs/](https://github.com/yourusername/rdb/docs)
 - 🐛 **Bug Reports:** [GitHub Issues](https://github.com/yourusername/rdb/issues)
 - 💬 **Questions:** [GitHub Discussions](https://github.com/yourusername/rdb/discussions)
-- 📧 **Email:** support@rdb.example.com
+- 📧 **Email:** contact@muhammadfiaz.com
 
 ---
 

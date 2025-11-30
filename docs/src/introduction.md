@@ -305,7 +305,7 @@ curl -X POST http://localhost:8080/query \
 - 📖 **Documentation:** [Full docs](https://github.com/muhammad-fiaz/rdb/docs)
 - 🐛 **Issues:** [GitHub Issues](https://github.com/muhammad-fiaz/rdb/issues)
 - 💬 **Discussions:** [GitHub Discussions](https://github.com/muhammad-fiaz/rdb/discussions)
-- 📧 **Email:** support@rdb.example.com
+- 📧 **Email:** contact@muhammadfiaz.com
 
 ---
 
