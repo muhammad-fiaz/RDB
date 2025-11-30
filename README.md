@@ -1,5 +1,5 @@
 <div align="center">
-<h1>RDB</h1>
+<h1>RDB - Relational Database with JSON Query Language</h1>
 
 <a href="https://github.com/muhammad-fiaz/rdb"><img src="https://img.shields.io/github/stars/muhammad-fiaz/rdb" alt="GitHub stars"></a>
 <a href="https://github.com/muhammad-fiaz/rdb/issues"><img src="https://img.shields.io/github/issues/muhammad-fiaz/rdb" alt="GitHub issues"></a>
@@ -14,8 +14,6 @@
 **📚 [Documentation](docs/) | [Quick Start](docs/src/introduction.md)**
 
 </div>
-
-# 🚀 RDB - Relational Database with JSON Query Language
 
 Welcome to **RDB** - a high-performance, JSON-based relational database built entirely in Rust!
 
