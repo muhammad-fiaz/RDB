@@ -131,9 +131,11 @@ jobs:
       - name: Generate release notes
         id: release_notes
         run: |
-          VERSION=${{ steps.get_version.outputs.VERSION }}
-          TAG_NAME=${{ steps.get_version.outputs.TAG_NAME }}
-          echo "Generating release notes for version $VERSION"
+          # Use workflow expressions to populate repo and tag so final URLs are concrete
+          REPO="${{ github.repository }}"
+          TAG="${{ github.event.release.tag_name }}"
+          VERSION="${{ steps.get_version.outputs.VERSION }}"
+          echo "Generating release notes for version $VERSION (tag $TAG)"
 
           cat > release_notes.md << EOF
           # RDB v$VERSION
@@ -147,7 +149,7 @@ jobs:
 
           if git describe --tags --abbrev=0 HEAD~1 >/dev/null 2>&1; then
             LAST_TAG=$(git describe --tags --abbrev=0 HEAD~1)
-            echo "Generating changelog from $LAST_TAG to $TAG_NAME"
+            echo "Generating changelog from $LAST_TAG to $TAG"
             git log --pretty=format:"%s" $LAST_TAG..HEAD | while read -r line; do
               if [[ ! "$line" =~ ^Merge ]]; then
                 echo "- $line" >> release_notes.md
@@ -162,7 +164,7 @@ jobs:
             done
           fi
 
-          cat >> release_notes.md << 'EOF'
+          cat >> release_notes.md << EOF
 
           ## 📦 Installation
 
@@ -175,11 +177,11 @@ jobs:
 
           | Platform | Architecture | Filename | Direct link |
           |----------|--------------|----------|-------------|
-          | Linux (GNU) | x86_64 | `rdb-linux-x86_64.tar.gz` | https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/rdb-linux-x86_64.tar.gz |
-          | Linux (musl) | x86_64 | `rdb-linux-x86_64-musl.tar.gz` | https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/rdb-linux-x86_64-musl.tar.gz |
-          | Windows | x86_64 | `rdb-windows-x86_64.zip` | https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/rdb-windows-x86_64.zip |
-          | macOS | x86_64 (Intel) | `rdb-macos-x86_64.tar.gz` | https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/rdb-macos-x86_64.tar.gz |
-          | macOS | aarch64 (Apple Silicon) | `rdb-macos-aarch64.tar.gz` | https://github.com/${{ github.repository }}/releases/download/${TAG_NAME}/rdb-macos-aarch64.tar.gz |
+          | Linux (GNU) | x86_64 | `rdb-linux-x86_64.tar.gz` | https://github.com/${REPO}/releases/download/${TAG}/rdb-linux-x86_64.tar.gz |
+          | Linux (musl) | x86_64 | `rdb-linux-x86_64-musl.tar.gz` | https://github.com/${REPO}/releases/download/${TAG}/rdb-linux-x86_64-musl.tar.gz |
+          | Windows | x86_64 | `rdb-windows-x86_64.zip` | https://github.com/${REPO}/releases/download/${TAG}/rdb-windows-x86_64.zip |
+          | macOS | x86_64 (Intel) | `rdb-macos-x86_64.tar.gz` | https://github.com/${REPO}/releases/download/${TAG}/rdb-macos-x86_64.tar.gz |
+          | macOS | aarch64 (Apple Silicon) | `rdb-macos-aarch64.tar.gz` | https://github.com/${REPO}/releases/download/${TAG}/rdb-macos-aarch64.tar.gz |
 
           ## 🚀 Quick Start
 
